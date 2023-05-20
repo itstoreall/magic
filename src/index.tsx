@@ -13,6 +13,11 @@ import App from './App';
 
 const router = createBrowserRouter([
   {
+    path: '/*',
+    element: <App />,
+    errorElement: <ErrorPage />,
+  },
+  {
     path: '/',
     element: <App />,
     errorElement: <ErrorPage />,
@@ -22,22 +27,23 @@ const router = createBrowserRouter([
         element: <ArticlesPage />,
       },
       {
-        path: '/magic',
-        element: <ArticlesPage />,
-      },
-      {
         path: '/article',
         element: <ArticlePage />,
+      },
+      {
+        path: '/article/edit',
+        element: <EditArticlePage />,
       },
       {
         path: '/add',
         element: <AddArticlePage />,
       },
-      {
-        path: '/edit',
-        element: <EditArticlePage />,
-      },
     ],
+  },
+  {
+    path: '/',
+    element: <App />,
+    errorElement: <ErrorPage />,
   },
 ]);
 
