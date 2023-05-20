@@ -7,26 +7,26 @@ import {
   ApolloClient,
   InMemoryCache,
   ApolloProvider,
-  gql,
+  // gql,
 } from '@apollo/client';
 
 const client = new ApolloClient({
-  uri: 'https://magic-api-uh8o.onrender.com',
+  uri: 'https://magic-server.onrender.com/',
   cache: new InMemoryCache(),
 });
 
-client
-  .query({
-    query: gql`
-      query GetLBooks {
-        books {
-          id
-          title
-        }
-      }
-    `,
-  })
-  .then(result => console.log('========>', result));
+// client
+//   .query({
+//     query: gql`
+//       query GetArticles {
+//         articles {
+//           id
+//           title
+//         }
+//       }
+//     `,
+//   })
+//   .then(result => console.log('========>', result));
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
