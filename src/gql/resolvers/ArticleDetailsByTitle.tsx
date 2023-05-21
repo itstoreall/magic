@@ -14,14 +14,15 @@ const ArticleDetailsByTitle = ({ title }: { title: string }) => {
     return <p>Error: {error.message}</p>;
   }
 
-  const { getArticleByTitle } = data;
+  const { getArticleByTitle: article } = data;
 
   return (
     <div>
-      <h1>{getArticleByTitle.title}</h1>
-      <p>{getArticleByTitle.article}</p>
-      <p>Author: {getArticleByTitle.author}</p>
-      <p>{getArticleByTitle.image}</p>
+      <h1>{article.title}</h1>
+      <p>{article.description}</p>
+      <p>{article.article}</p>
+      <p>Author: {article.author}</p>
+      <p>{article.image}</p>
       {/* <img src={getArticleByTitle.image} alt={getArticleByTitle.title} /> */}
     </div>
   );

@@ -5,7 +5,7 @@ const GET_ARTICLES = gql`
     articles {
       id
       title
-      article
+      description
       author
       image
     }
