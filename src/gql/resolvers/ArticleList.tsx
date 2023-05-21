@@ -1,20 +1,16 @@
-import { useQuery } from '@apollo/client';
-import GET_ARTICLES from '../schemas/getArticles';
+import { Link } from 'react-router-dom';
 
-const ArticleList = () => {
-  const { loading, error, data } = useQuery(GET_ARTICLES);
-
-  if (loading) return <p>Loading...</p>;
-  if (error) return <p>Error : {error.message}</p>;
-
-  return data.articles.map((el: any) => {
+const ArticleList = ({ articles }: any) => {
+  return articles?.map((el: any) => {
     return (
       <div key={el.id}>
-        <h3>{el.id}</h3>
-        <p>{el.title}</p>
-        <p>{el.article}</p>
-        <p>{el.author}</p>
-        <p>{el.image}</p>
+        <Link to={`/article/${el.id}`}>
+          <h3>{`id: ${el.id}`}</h3>
+          <p>{`title: ${el.title}`}</p>
+          <p>{`article: ${el.article}`}</p>
+          <p>{`author: ${el.author}`}</p>
+          <p>{`image: ${el.image}`}</p>
+        </Link>
       </div>
     );
   });
