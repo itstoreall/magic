@@ -1,24 +1,48 @@
-import './App.css';
-import dataJson from './data.json';
-import ArticleList from './gql/resolvers/ArticleList';
-import AddArticleForm from './gql/resolvers/AddArticleForm';
-import DeleteArticleButton from './gql/resolvers/DeleteArticleButton';
-import EditArticleForm from './gql/resolvers/EditArticleForm';
-import ArticleDetails from './gql/resolvers/ArticleDetails';
-import ArticleDetailsByTitle from './gql/resolvers/ArticleDetailsByTitle';
+// import { useEffect } from 'react';
+import { Routes, Route, useNavigate, useLocation } from 'react-router-dom';
+import ArticlesPage from './pages/ArticlesPage';
+import ArticlePage from './pages/ArticlePage';
+import EditArticlePage from './pages/EditArticlePage';
+import Layout from './components/Layout';
+import AddArticlePage from './pages/AddArticlePage';
 
 function App() {
+  // const navigate = useNavigate();
+
+  // useEffect(() => {
+  //   navigate('/');
+  // }, []);
+
   return (
-    <div className='App'>
-      <header className='App-header'>{dataJson.name}</header>
-      <ArticleList />
-      <AddArticleForm />
-      <DeleteArticleButton id={'6468833bf0e8b7c9da9573dd'} />
-      <EditArticleForm id={'646801e6c33c883defc9ba38'} />
-      <ArticleDetails id={'646801e6c33c883defc9ba38'} />
-      <ArticleDetailsByTitle title={'666'} />
+    <>
+      <Routes>
+        <Route path='/' element={<Layout />}>
+          <Route index element={<ArticlesPage />} />
+          <Route path='/article' element={<ArticlePage />} />
+          <Route path='/article/edit' element={<EditArticlePage />} />
+          <Route path='/add' element={<AddArticlePage />} />
+          <Route path='*' element={<NotFoundPage />} />
+        </Route>
+      </Routes>
+    </>
+  );
+}
+
+function NotFoundPage() {
+  const location = useLocation();
+
+  return (
+    <div>
+      <h2>404 - Page not found</h2>
+      <p>
+        The requested URL <code>{location.pathname}</code> was not found.
+      </p>
     </div>
   );
 }
+
+// function RedirectToRoot() {
+//   return null;
+// }
 
 export default App;
