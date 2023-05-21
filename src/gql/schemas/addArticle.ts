@@ -4,6 +4,7 @@ const ADD_ARTICLE = gql`
   mutation AddArticle($input: ArticleInput) {
     addArticle(input: $input) {
       title
+      description
       article
       author
       image

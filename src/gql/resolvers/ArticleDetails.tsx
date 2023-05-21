@@ -26,26 +26,24 @@ const ArticleDetails = () => {
   });
 
   if (loading) return <p>Loading...</p>;
-  if (error) return <p>Error: {error.message}</p>;
+  if (error) return <p>{'There is no such article'}</p>;
 
-  const { getArticleById } = data;
+  const { getArticleById: article } = data;
 
   return (
     <>
       {isArticle ? (
         <div>
-          <h1>{getArticleById.title}</h1>
-          <p>{getArticleById.id}</p>
-          <p>{getArticleById.article}</p>
-          <p>Author: {getArticleById.author}</p>
-          <p>{getArticleById.image}</p>
+          <h1>{article.title}</h1>
+          <p>id: {article.id}</p>
+          <p>Article: {article.article}</p>
+          <p>Author: {article.author}</p>
+          <p>image: {article.image}</p>
           {/* <img src={getArticleById.image} alt={getArticleById.title} /> */}
           <DeleteArticleButton id={id} />
         </div>
       ) : (
-        <div>
-          <h1>{'Article was deleted'}</h1>
-        </div>
+        <p>{'Article was deleted'}</p>
       )}
     </>
   );

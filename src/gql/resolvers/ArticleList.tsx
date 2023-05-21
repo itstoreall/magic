@@ -7,7 +7,7 @@ const ArticleList = ({ articles }: any) => {
         <Link to={`/article/${el.id}`}>
           <h3>{`id: ${el.id}`}</h3>
           <p>{`title: ${el.title}`}</p>
-          <p>{`article: ${el.article}`}</p>
+          <p>{`description: ${el.description}`}</p>
           <p>{`author: ${el.author}`}</p>
           <p>{`image: ${el.image}`}</p>
         </Link>
