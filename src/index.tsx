@@ -1,17 +1,12 @@
-import React from 'react';
 import ReactDOM from 'react-dom/client';
+import { HashRouter as Router } from 'react-router-dom'; // BrowserRouter or HashRouter
 import './index.css';
 import App from './App';
-import reportWebVitals from './reportWebVitals';
-import {
-  ApolloClient,
-  InMemoryCache,
-  ApolloProvider,
-  // gql,
-} from '@apollo/client';
+import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
 
 const client = new ApolloClient({
-  uri: 'https://magic-server.onrender.com/',
+  // uri: 'https://magic-server.onrender.com/', // render.com
+  uri: 'https://magic-api-vercel.vercel.app/', // vercel.com
   cache: new InMemoryCache(),
 });
 
@@ -33,10 +28,8 @@ const root = ReactDOM.createRoot(
 );
 root.render(
   <ApolloProvider client={client}>
-    <React.StrictMode>
+    <Router>
       <App />
-    </React.StrictMode>
+    </Router>
   </ApolloProvider>
 );
-
-reportWebVitals();
