@@ -5,6 +5,7 @@ const GET_ARTICLE_BY_ID = gql`
     getArticleById(ID: $id) {
       id
       title
+      description
       article
       author
       image
