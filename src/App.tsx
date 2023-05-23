@@ -9,12 +9,15 @@ import AddArticlePage from './pages/AddArticlePage';
 import EditArticlePage from './pages/EditArticlePage';
 import DeleteArticlePage from './pages/DeleteArticlePage';
 import NotFoundPage from './pages/NotFoundPage';
-import AdminPage from './pages/AdminPage';
 import GET_ARTICLES from './gql/schemas/getArticles';
+import AdminPage from './pages/AdminPage';
+import VerificationPage from './pages/VerificationPage';
+import DashboardPage from './pages/DashboardPage';
 
 const App = () => {
-  const apolloClient = useApolloClient();
   const [articles, setArticles] = useState<any[]>([]);
+
+  const apolloClient = useApolloClient();
 
   useEffect(() => {
     const fetchArticles = async () => {
@@ -34,11 +37,14 @@ const App = () => {
       <Routes>
         <Route path='/' element={<Layout />}>
           <Route index element={<ArticlesPage />} />
-          <Route path='//article/:id' element={<ArticlePage />} />
+          <Route path='/article/:id' element={<ArticlePage />} />
           <Route path='/article/:id/edit' element={<EditArticlePage />} />
           <Route path='/article/:id/delete' element={<DeleteArticlePage />} />
           <Route path='/add' element={<AddArticlePage />} />
-          <Route path='/admin' element={<AdminPage />} />
+          <Route path='/admin' element={<AdminPage />}>
+            <Route path='/admin/verification' element={<VerificationPage />} />
+            <Route path='/admin/dashboard' element={<DashboardPage />} />
+          </Route>
           <Route path='*' element={<NotFoundPage />} />
         </Route>
       </Routes>
