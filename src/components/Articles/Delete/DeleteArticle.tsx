@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import DeleteArticleButton from '../gql/resolvers/DeleteArticleButton';
-import SuccessDeleteArticle from '../components/SuccessDeleteArticle';
+import DeleteArticleButton from './DeleteArticleButton';
+import SuccessDeleteArticle from './SuccessDeleteArticle';
 
-const DeleteArticlePage = () => {
+const DeleteArticle = () => {
   const [isDeleted, setIsDeleted] = useState<boolean>(false);
 
   const { pathname } = useLocation();
@@ -18,7 +18,7 @@ const DeleteArticlePage = () => {
 
   isDeleted &&
     setTimeout(() => {
-      navigate(`/`);
+      navigate(`/admin/dashboard/articles`);
     }, 3000);
 
   return (
@@ -45,4 +45,4 @@ const DeleteArticlePage = () => {
   );
 };
 
-export default DeleteArticlePage;
+export default DeleteArticle;

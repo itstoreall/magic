@@ -1,9 +1,18 @@
-import { useQuery } from '@apollo/client';
-import { Link } from 'react-router-dom';
-import GET_ARTICLE_BY_ID from '../schemas/getArticleById';
 import { useEffect } from 'react';
+import { useQuery } from '@apollo/client';
+import { Link, useLocation } from 'react-router-dom';
+import GET_ARTICLE_BY_ID from '../../../gql/getArticleById';
 
-const ArticleDetails = ({ id }: { id: string }) => {
+const ArticleDetails = () => {
+  const { pathname } = useLocation();
+
+  const parsePathname = () => {
+    const parsed = pathname.split('/');
+    return parsed[parsed.length - 1];
+  };
+
+  const id = parsePathname();
+
   const { loading, error, data, refetch } = useQuery(GET_ARTICLE_BY_ID, {
     variables: { id },
   });
@@ -25,8 +34,13 @@ const ArticleDetails = ({ id }: { id: string }) => {
       <p>Article: {article.article}</p>
       <p>Author: {article.author}</p>
       <p>image: {article.image}</p>
-      <Link to={`/article/${id}/edit`}>Edit</Link>
-      <Link to={`/article/${id}/delete`}>Delete</Link>
+
+      {pathname.includes(`/admin/dashboard/article`) && (
+        <>
+          <Link to={`/admin/dashboard/articles/${id}/edit`}>Edit</Link>
+          <Link to={`/admin/dashboard/articles/${id}/delete`}>Delete</Link>
+        </>
+      )}
     </div>
   );
 };

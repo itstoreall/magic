@@ -1,14 +1,14 @@
 import { useState } from 'react';
 import { useMutation, useQuery } from '@apollo/client';
 import { useNavigate } from 'react-router-dom';
-import ADD_ARTICLE from '../schemas/addArticle';
-import GET_ARTICLES from '../schemas/getArticles';
-import { useGlobalContext } from '../../context/GlobalContext';
+import ADD_ARTICLE from '../../../gql/addArticle';
+import GET_ARTICLES from '../../../gql/getArticles';
+import { useGlobalContext } from '../../../context/GlobalContext';
 
 const AddArticleForm = () => {
   const [addArticle, { loading, error }] = useMutation(ADD_ARTICLE);
   const { refetch: getArticles } = useQuery(GET_ARTICLES);
-  const { articles, setArticles } = useGlobalContext();
+  const { setArticles } = useGlobalContext();
   const navigate = useNavigate();
 
   const [isArticle, setIsArticle] = useState<boolean>(false);
@@ -28,13 +28,12 @@ const AddArticleForm = () => {
 
   const updateArticles = async () => {
     const updatedArticles = await getArticles();
-    console.log('updatedArticles =====__-->>>', updatedArticles);
 
     const { articles } = updatedArticles.data;
 
     articles && setArticles(articles);
     const id = articles[articles?.length - 1].id;
-    navigate(`/article/${id}`);
+    navigate(`/admin/dashboard/articles/${id}`);
   };
 
   const handleInput = (event: any) => {
@@ -72,10 +71,6 @@ const AddArticleForm = () => {
         setIsArticle(true);
         clearStates();
         updateArticles();
-
-        console.log('articles:', articles);
-
-        // navigate(`/article/${id}`);
       }
     } catch (e) {
       console.error(e);

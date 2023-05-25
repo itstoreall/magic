@@ -1,8 +1,7 @@
 import { useMutation, useQuery } from '@apollo/client';
-import DELETE_ARTICLE from '../schemas/deleteArticle';
-import GET_ARTICLES from '../schemas/getArticles';
-import { useGlobalContext } from '../../context/GlobalContext';
-// import { useState } from 'react';
+import DELETE_ARTICLE from '../../../gql/deleteArticle';
+import GET_ARTICLES from '../../../gql/getArticles';
+import { useGlobalContext } from '../../../context/GlobalContext';
 
 const DeleteArticleButton = ({
   id,
@@ -14,8 +13,6 @@ const DeleteArticleButton = ({
   const [DeleteArticle, { loading, error }] = useMutation(DELETE_ARTICLE);
   const { refetch: getArticles } = useQuery(GET_ARTICLES);
   const { setArticles } = useGlobalContext();
-
-  // const [isDeleted, setIsDeleted] = useState<boolean>(false);
 
   const updateArticles = async () => {
     const updatedArticles = await getArticles();
@@ -40,8 +37,6 @@ const DeleteArticleButton = ({
       console.error(error);
     }
   };
-
-  console.log('id --=--=->', id);
 
   return (
     <>

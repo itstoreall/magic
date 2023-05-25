@@ -1,9 +1,9 @@
 import { useCallback, useEffect, useState } from 'react';
 import { useMutation, useQuery } from '@apollo/client';
-import GET_ARTICLE_BY_ID from '../schemas/getArticleById';
-import EDIT_ARTICLE from '../schemas/editArticle';
-import GET_ARTICLES from '../schemas/getArticles';
-import { useGlobalContext } from '../../context/GlobalContext';
+import GET_ARTICLE_BY_ID from '../../../gql/getArticleById';
+import EDIT_ARTICLE from '../../../gql/editArticle';
+import GET_ARTICLES from '../../../gql/getArticles';
+import { useGlobalContext } from '../../../context/GlobalContext';
 import { useLocation, useNavigate } from 'react-router-dom';
 
 const EditArticleForm = () => {
@@ -95,7 +95,7 @@ const EditArticleForm = () => {
         updateArticles();
       }
 
-      navigate(`/article/${id}`);
+      navigate(`/admin/dashboard/articles/${id}`);
     } catch (e) {
       console.error(e);
     }

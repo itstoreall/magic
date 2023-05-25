@@ -1,5 +1,5 @@
 import { useQuery } from '@apollo/client';
-import GET_ARTICLE_BY_TITLE from '../schemas/getArticleByTitle';
+import GET_ARTICLE_BY_TITLE from '../../../gql/getArticleByTitle';
 
 const ArticleDetailsByTitle = ({ title }: { title: string }) => {
   const { loading, error, data } = useQuery(GET_ARTICLE_BY_TITLE, {

@@ -1,7 +1,7 @@
-import ArticleList from '../gql/resolvers/ArticleList';
-import { useGlobalContext } from '../context/GlobalContext';
+import ArticleList from './ArticleList';
+import { useGlobalContext } from '../../context/GlobalContext';
 
-const ArticlesPage = () => {
+const Articles = () => {
   const { articles } = useGlobalContext();
 
   return (
@@ -16,4 +16,4 @@ const ArticlesPage = () => {
   );
 };
 
-export default ArticlesPage;
+export default Articles;

@@ -1,6 +1,6 @@
 import { useMutation } from '@apollo/client';
 import { MAGIC_ACCESS } from '../../constants';
-import UPDATE_ADMIN from '../schemas/updateAdmin';
+import UPDATE_ADMIN from '../../gql/updateAdmin';
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 
