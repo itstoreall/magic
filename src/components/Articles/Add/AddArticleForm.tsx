@@ -1,13 +1,15 @@
 import { useState } from 'react';
 import { useMutation, useQuery } from '@apollo/client';
-import ADD_ARTICLE from '../schemas/addArticle';
-import GET_ARTICLES from '../schemas/getArticles';
-import { useGlobalContext } from '../../context/GlobalContext';
+import { useNavigate } from 'react-router-dom';
+import ADD_ARTICLE from '../../../gql/addArticle';
+import GET_ARTICLES from '../../../gql/getArticles';
+import { useGlobalContext } from '../../../context/GlobalContext';
 
 const AddArticleForm = () => {
   const [addArticle, { loading, error }] = useMutation(ADD_ARTICLE);
   const { refetch: getArticles } = useQuery(GET_ARTICLES);
   const { setArticles } = useGlobalContext();
+  const navigate = useNavigate();
 
   const [isArticle, setIsArticle] = useState<boolean>(false);
   const [title, setTitle] = useState<string>('');
@@ -26,7 +28,12 @@ const AddArticleForm = () => {
 
   const updateArticles = async () => {
     const updatedArticles = await getArticles();
-    updatedArticles && setArticles(updatedArticles.data.articles);
+
+    const { articles } = updatedArticles.data;
+
+    articles && setArticles(articles);
+    const id = articles[articles?.length - 1].id;
+    navigate(`/admin/dashboard/articles/${id}`);
   };
 
   const handleInput = (event: any) => {
@@ -56,15 +63,17 @@ const AddArticleForm = () => {
     try {
       const { data } = await addArticle({ variables: { input: articleInput } });
 
-      console.log('addArticle:', data.addArticle.title);
+      const { title } = data.addArticle;
 
-      if (data.addArticle.title) {
+      console.log('addArticle:', title);
+
+      if (title) {
         setIsArticle(true);
         clearStates();
         updateArticles();
       }
-    } catch (error) {
-      console.error(error);
+    } catch (e) {
+      console.error(e);
     }
   };
 

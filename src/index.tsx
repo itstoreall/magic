@@ -5,8 +5,7 @@ import './index.css';
 import App from './App';
 
 const client = new ApolloClient({
-  // uri: 'https://magic-server.onrender.com/', // render.com
-  uri: 'https://magic-api-vercel.vercel.app/', // vercel.com
+  uri: 'https://magic-api-vercel.vercel.app/',
   cache: new InMemoryCache(),
 });
 

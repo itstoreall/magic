@@ -1,9 +1,15 @@
 import { useMutation, useQuery } from '@apollo/client';
-import DELETE_ARTICLE from '../schemas/deleteArticle';
-import GET_ARTICLES from '../schemas/getArticles';
-import { useGlobalContext } from '../../context/GlobalContext';
+import DELETE_ARTICLE from '../../../gql/deleteArticle';
+import GET_ARTICLES from '../../../gql/getArticles';
+import { useGlobalContext } from '../../../context/GlobalContext';
 
-const DeleteArticleButton = ({ id }: { id: string }) => {
+const DeleteArticleButton = ({
+  id,
+  setIsDeleted,
+}: {
+  id: string;
+  setIsDeleted: any;
+}) => {
   const [DeleteArticle, { loading, error }] = useMutation(DELETE_ARTICLE);
   const { refetch: getArticles } = useQuery(GET_ARTICLES);
   const { setArticles } = useGlobalContext();
@@ -15,27 +21,30 @@ const DeleteArticleButton = ({ id }: { id: string }) => {
 
   const handleDelete = async () => {
     try {
-      const result = await DeleteArticle({
+      const { data } = await DeleteArticle({
         variables: {
           id,
         },
       });
 
-      console.log('deleteArticle:', result?.data.deleteArticle);
+      const deleted = data?.deleteArticle;
 
-      result?.data.deleteArticle && updateArticles();
+      console.log('deleteArticle:', deleted);
+
+      setIsDeleted(deleted);
+      updateArticles();
     } catch (error) {
       console.error(error);
     }
   };
 
   return (
-    <div>
+    <>
       <button onClick={handleDelete} disabled={loading}>
         {`Delete Article ${id}`}
       </button>
       {error && <p>Error: {error.message}</p>}
-    </div>
+    </>
   );
 };
 
