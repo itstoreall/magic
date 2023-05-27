@@ -1,10 +1,12 @@
-import Navigation from './Navigation';
+import { HeaderTag, NavLinkTag } from './Layout.styles';
 
 const Header = () => {
   return (
-    <header>
-      <Navigation element={'header'} />
-    </header>
+    <HeaderTag>
+      <NavLinkTag to='/'>
+        <h1>Magic</h1>
+      </NavLinkTag>
+    </HeaderTag>
   );
 };
 

@@ -4,8 +4,10 @@ import { useNavigate } from 'react-router-dom';
 import ADD_ARTICLE from '../../../gql/addArticle';
 import GET_ARTICLES from '../../../gql/getArticles';
 import { useGlobalContext } from '../../../context/GlobalContext';
+import base64Converter from '../../../utils/base64Converter';
+// import DragAndDrop from './UploadImage/ImageUploader';
 
-const AddArticleForm = () => {
+const AddForm = () => {
   const [addArticle, { loading, error }] = useMutation(ADD_ARTICLE);
   const { refetch: getArticles } = useQuery(GET_ARTICLES);
   const { setArticles } = useGlobalContext();
@@ -14,16 +16,17 @@ const AddArticleForm = () => {
   const [isArticle, setIsArticle] = useState<boolean>(false);
   const [title, setTitle] = useState<string>('');
   const [description, setDescription] = useState<string>('');
-  const [article, setArticle] = useState<string>('');
+  const [text, setText] = useState<string>('');
   const [author, setAuthor] = useState<string>('');
-  const [image, setImage] = useState<string>('');
+  const [tags, setTags] = useState<string[]>(['magic']);
+  const [imageData, setImageData] = useState<string>('');
 
   const clearStates = () => {
     setTitle('');
     setDescription('');
-    setArticle('');
+    setText('');
     setAuthor('');
-    setImage('');
+    setImageData('');
   };
 
   const updateArticles = async () => {
@@ -42,9 +45,8 @@ const AddArticleForm = () => {
 
     name === 'title' && setTitle(value);
     name === 'description' && setDescription(value);
-    name === 'article' && setArticle(value);
+    name === 'text' && setText(value);
     name === 'author' && setAuthor(value);
-    name === 'image' && setImage(value);
 
     console.log(`input ${name} value:`, value);
   };
@@ -55,10 +57,13 @@ const AddArticleForm = () => {
     const articleInput = {
       title: title,
       description: description,
-      article: article,
+      text: text,
       author: author,
-      image: image,
+      image: imageData,
+      tags: ['magic'],
     };
+
+    console.log('articleInput --->', articleInput);
 
     try {
       const { data } = await addArticle({ variables: { input: articleInput } });
@@ -84,49 +89,57 @@ const AddArticleForm = () => {
       ) : (
         <p>{'Fill in the fields and click Submit button'}</p>
       )}
-      <form onSubmit={handleSubmit}>
-        <input
-          type='text'
-          value={title}
-          onChange={e => handleInput(e)}
-          name='title'
-          placeholder='Title'
-        />
-        <input
-          type='text'
-          value={description}
-          onChange={e => handleInput(e)}
-          name='description'
-          placeholder='Description'
-        />
-        <input
-          type='text'
-          value={article}
-          onChange={e => handleInput(e)}
-          name='article'
-          placeholder='Article'
-        />
-        <input
-          type='text'
-          value={author}
-          onChange={e => handleInput(e)}
-          name='author'
-          placeholder='Author'
-        />
-        <input
-          type='text'
-          value={image}
-          onChange={e => handleInput(e)}
-          name='image'
-          placeholder='Image'
-        />
-        <button type='submit' disabled={loading}>
-          Submit
-        </button>
-        {error && <p>Error: {error.message}</p>}
-      </form>
+      {!isArticle && (
+        <>
+          {imageData && (
+            <div>
+              <h3>Uploaded Image:</h3>
+              <img style={{ width: '200px' }} src={imageData} alt='Uploaded' />
+            </div>
+          )}
+          <form onSubmit={handleSubmit}>
+            <input
+              type='text'
+              value={title}
+              onChange={e => handleInput(e)}
+              name='title'
+              placeholder='Title'
+            />
+            <input
+              type='text'
+              value={description}
+              onChange={e => handleInput(e)}
+              name='description'
+              placeholder='Description'
+            />
+            <input
+              type='text'
+              value={text}
+              onChange={e => handleInput(e)}
+              name='text'
+              placeholder='Article text'
+            />
+            <input
+              type='text'
+              value={author}
+              onChange={e => handleInput(e)}
+              name='author'
+              placeholder='Author'
+            />
+            <input
+              type='file'
+              accept='.jpg, .jpeg, .png'
+              onChange={base64Converter(setImageData)}
+            />
+            <button type='submit' disabled={loading}>
+              Submit
+            </button>
+            {error && <p>Error: {error.message}</p>}
+          </form>
+        </>
+      )}
     </>
   );
 };
 
-export default AddArticleForm;
+export default AddForm;

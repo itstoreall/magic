@@ -1,17 +1,28 @@
 import { Outlet } from 'react-router-dom';
 import Header from './Header';
 import Footer from './Footer';
+import Navigation from './Navigation';
+import Main from './Main';
+import Content from './Content';
 
 const Layout = () => {
   return (
     <div className='container'>
-      <div className='content'>
-        <Header />
-        <Outlet />
-      </div>
-      <div className='footer'>
-        <Footer />
-      </div>
+      <Header />
+      <Navigation element={'top'} />
+
+      <Main>
+        {/* <aside>
+          <h2>Aside</h2>
+        </aside> */}
+
+        <Content>
+          <Outlet />
+        </Content>
+      </Main>
+
+      <Navigation element={'footer'} />
+      <Footer />
     </div>
   );
 };

@@ -11,7 +11,7 @@ const Dashboard = () => {
 
   const logOut = () => {
     localStorage.removeItem(adm);
-    navigate('/admin/login');
+    navigate('/admin');
   };
 
   return (

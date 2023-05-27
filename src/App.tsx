@@ -9,7 +9,7 @@ import Articles from './components/Articles/Articles';
 import AdminPage from './pages/AdminPage';
 import LogIn from './components/Admin/LogIn';
 import Dashboard from './components/Admin/Dashboard';
-import AddArticlePage from './components/Articles/Add/AddArticle';
+import AddArticlePage from './components/Articles/Add/Add';
 import EditArticle from './components/Articles/Edit';
 import DeleteArticle from './components/Articles/Delete';
 import NotFoundPage from './pages/NotFoundPage';
@@ -33,11 +33,9 @@ const App = () => {
     fetchArticles();
   }, [apolloClient]);
 
-  const LOGIN = '/admin/login';
-  const login = LOGIN;
-
-  const DASHBOARD = '/admin/dashboard';
-  const dash = DASHBOARD;
+  const login = '/admin/login';
+  const dash = '/admin/dashboard';
+  const art = '/articles/:id';
 
   return (
     <GlobalContext.Provider value={{ articles, setArticles }}>
@@ -45,21 +43,15 @@ const App = () => {
         <Route path='/' element={<Layout />}>
           <Route index element={<HomePage />} />
           <Route path='/articles' element={<Articles />} />
-          <Route path='/articles/:id' element={<ArticleDetails />} />
+          <Route path={art} element={<ArticleDetails />} />
           <Route path='/admin' element={<AdminPage />}>
             <Route path={login} element={<LogIn />} />
             <Route path={dash} element={<Dashboard />} />
             <Route path={`${dash}/add`} element={<AddArticlePage />} />
             <Route path={`${dash}/articles`} element={<Articles />} />
-            <Route path={`${dash}/articles/:id`} element={<ArticleDetails />} />
-            <Route
-              path={`${dash}/articles/:id/edit`}
-              element={<EditArticle />}
-            />
-            <Route
-              path={`${dash}/articles/:id/delete`}
-              element={<DeleteArticle />}
-            />
+            <Route path={`${dash}${art}`} element={<ArticleDetails />} />
+            <Route path={`${dash}${art}/edit`} element={<EditArticle />} />
+            <Route path={`${dash}${art}/delete`} element={<DeleteArticle />} />
           </Route>
           <Route path='*' element={<NotFoundPage />} />
         </Route>
