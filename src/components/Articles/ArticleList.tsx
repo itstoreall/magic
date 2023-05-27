@@ -6,19 +6,10 @@ const ArticleList = ({ articles }: any) => {
 
   const setFields = (el: any) => {
     return (
-      <div
-        style={{
-          backgroundColor: '#85909c',
-          // display: 'grid',
-          // gridTemplateColumns: '1fr 1fr',
-          // display: 'flex',
-        }}
-      >
+      <div style={{ backgroundColor: '#85909c' }}>
         <div
           style={{
             height: '250px',
-            // width: '50%',
-            // maxWidth: '450px',
             display: 'flex',
             justifyContent: 'center',
             alignItems: 'center',

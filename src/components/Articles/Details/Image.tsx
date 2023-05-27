@@ -1,10 +1,11 @@
 import ImageCropper from '../../helpers/ImageCropper';
 import { Thumb } from './Details.styles';
 
-const Image = ({ src, targetWidth }: { src: string; targetWidth: number }) => {
+const Image = ({ src }: { src: string }) => {
   return (
     <Thumb>
-      <ImageCropper src={src} targetWidth={targetWidth} />
+      {/* <ImageCropper src={src} targetWidth={targetWidth} /> */}
+      <img src={src} alt='' />
     </Thumb>
   );
 };

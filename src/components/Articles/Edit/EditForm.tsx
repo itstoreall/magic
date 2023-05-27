@@ -26,23 +26,23 @@ const EditForm = () => {
     return parsed[parsed.length - 2];
   };
 
+  console.log('articles -->', articles);
+
   const id = parsePathname();
 
   useEffect(() => {
     const selectedArticle = articles.find(item => item.id === id);
-    console.log('isArticle', isArticle);
-    console.log('selectedArticle', selectedArticle);
 
     if (selectedArticle) {
       setTitle(selectedArticle.title);
       setDescription(selectedArticle.description);
-      setText(selectedArticle.article);
+      setText(selectedArticle.text);
       setAuthor(selectedArticle.author);
       setImageData(selectedArticle.image);
       setIsArticle(true);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [articles]);
 
   const updateArticles = async () => {
     const updatedArticles = await getArticles();
@@ -69,7 +69,7 @@ const EditForm = () => {
     const articleInput = {
       title: title,
       description: description,
-      article: text,
+      text: text,
       author: author,
       image: imageData,
     };
@@ -125,7 +125,7 @@ const EditForm = () => {
               value={text}
               onChange={e => handleInput(e)}
               name='text'
-              placeholder='Article'
+              placeholder='Article text'
             />
             <input
               type='text'
@@ -134,13 +134,13 @@ const EditForm = () => {
               name='author'
               placeholder='Author'
             />
-            <input
+            {/* <input
               type='text'
               value={imageData}
               onChange={e => handleInput(e)}
               name='image'
               placeholder='Image'
-            />
+            /> */}
             <input
               type='file'
               accept='.jpg, .jpeg, .png'

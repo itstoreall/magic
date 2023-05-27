@@ -3,6 +3,7 @@ import { Link, useLocation } from 'react-router-dom';
 import OG from '../../helpers/OG';
 import { useGlobalContext } from '../../../context/GlobalContext';
 import Image from './Image';
+import { Thumb } from './Details.styles';
 
 const Details = () => {
   const [article, setArticle] = useState<any>(null);
@@ -34,7 +35,11 @@ const Details = () => {
         <>
           <OG article={article} />
           <div>
-            <Image src={article.image} targetWidth={900} />
+            <Thumb>
+              {/* <ImageCropper src={src} targetWidth={targetWidth} /> */}
+              <img src={article.image} alt={article.title} />
+            </Thumb>
+            {/* <Image src={article.image} targetWidth={900} /> */}
             <h1>{article.title}</h1>
             <p>id: {article.id}</p>
             <p>description: {article.description}</p>

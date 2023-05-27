@@ -16,14 +16,15 @@ const AddForm = () => {
   const [isArticle, setIsArticle] = useState<boolean>(false);
   const [title, setTitle] = useState<string>('');
   const [description, setDescription] = useState<string>('');
-  const [article, setArticle] = useState<string>('');
+  const [text, setText] = useState<string>('');
   const [author, setAuthor] = useState<string>('');
+  const [tags, setTags] = useState<string[]>(['magic']);
   const [imageData, setImageData] = useState<string>('');
 
   const clearStates = () => {
     setTitle('');
     setDescription('');
-    setArticle('');
+    setText('');
     setAuthor('');
     setImageData('');
   };
@@ -44,7 +45,7 @@ const AddForm = () => {
 
     name === 'title' && setTitle(value);
     name === 'description' && setDescription(value);
-    name === 'article' && setArticle(value);
+    name === 'text' && setText(value);
     name === 'author' && setAuthor(value);
 
     console.log(`input ${name} value:`, value);
@@ -56,9 +57,10 @@ const AddForm = () => {
     const articleInput = {
       title: title,
       description: description,
-      article: article,
+      text: text,
       author: author,
       image: imageData,
+      tags: ['magic'],
     };
 
     console.log('articleInput --->', articleInput);
@@ -112,10 +114,10 @@ const AddForm = () => {
             />
             <input
               type='text'
-              value={article}
+              value={text}
               onChange={e => handleInput(e)}
-              name='article'
-              placeholder='Article'
+              name='text'
+              placeholder='Article text'
             />
             <input
               type='text'

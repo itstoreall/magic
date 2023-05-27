@@ -3,6 +3,7 @@ import { useGlobalContext } from '../../context/GlobalContext';
 
 const Articles = () => {
   const { articles } = useGlobalContext();
+  console.log('articles', articles);
 
   return (
     <div>

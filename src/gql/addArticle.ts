@@ -5,9 +5,10 @@ const ADD_ARTICLE = gql`
     addArticle(input: $input) {
       title
       description
-      article
+      text
       author
       image
+      tags
     }
   }
 `;

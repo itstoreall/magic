@@ -6,9 +6,11 @@ const GET_ARTICLES = gql`
       id
       title
       description
-      article
+      text
       author
       image
+      views
+      tags
     }
   }
 `;
