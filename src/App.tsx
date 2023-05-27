@@ -20,8 +20,6 @@ const App = () => {
 
   const apolloClient = useApolloClient();
 
-  console.log('process.env.NODE_ENV ---->', process.env.NODE_ENV);
-
   useEffect(() => {
     const fetchArticles = async () => {
       try {

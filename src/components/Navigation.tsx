@@ -10,7 +10,7 @@ const Navigation = ({ element }: { element: string }) => {
     <nav>
       <ul style={{ display: 'flex', listStyle: 'none', margin: 0, padding: 0 }}>
         <li style={{ marginRight: 40 }}>
-          <NavLinkTag to='/#'>Home</NavLinkTag>
+          <NavLinkTag to='/'>Home</NavLinkTag>
         </li>
         <li style={{ marginRight: 40 }}>
           <NavLinkTag to='/articles'>Articles</NavLinkTag>

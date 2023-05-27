@@ -14,6 +14,24 @@ const Details = () => {
   const { articles } = useGlobalContext();
 
   useEffect(() => {
+    document.title = 'Fanya!!!!'; // Update the title manually
+
+    console.log('document.title', document.title);
+
+    const metaDescription = document.querySelector('meta[name="description"]');
+    if (metaDescription) {
+      metaDescription.setAttribute('content', 'New description 111');
+    }
+    console.log('metaDescription', metaDescription);
+
+    const ogTitle = document.querySelector('meta[property="og:title"]');
+    if (ogTitle) {
+      ogTitle.setAttribute('content', 'New title 111');
+    }
+    console.log('ogTitle', ogTitle);
+  }, []);
+
+  useEffect(() => {
     const parsePathname = () => {
       const parsed = pathname.split('/');
       return parsed[parsed.length - 1];
@@ -33,7 +51,7 @@ const Details = () => {
     <>
       {article ? (
         <>
-          <OG article={article} />
+          {/* <OG article={article} /> */}
           <div>
             <Thumb>
               {/* <ImageCropper src={src} targetWidth={targetWidth} /> */}
