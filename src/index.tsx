@@ -1,14 +1,14 @@
 import ReactDOM from 'react-dom/client';
-import { BrowserRouter, HashRouter as Router } from 'react-router-dom'; // BrowserRouter or HashRouter
-import { Helmet, HelmetProvider } from 'react-helmet-async';
+import { BrowserRouter } from 'react-router-dom'; // BrowserRouter or HashRouter
+// import { Helmet, HelmetProvider } from 'react-helmet-async';
 import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
 import './index.css';
 import App from './App';
 
-const currentUrl =
-  process.env.NODE_ENV === 'production'
-    ? 'https://magic-api-vercel.vercel.app/'
-    : 'http://localhost:8822/';
+// const currentUrl =
+//   process.env.NODE_ENV === 'production'
+//     ? 'https://magic-api-vercel.vercel.app/'
+//     : 'http://localhost:8822/';
 
 const serverSwitch = 'https://magic-api-vercel.vercel.app/';
 // const serverSwitch = currentUrl;
@@ -23,13 +23,11 @@ const root = ReactDOM.createRoot(
 );
 
 root.render(
-  <HelmetProvider>
-    <ApolloProvider client={client}>
-      <BrowserRouter>
-        {/* <Router> */}
-        <App />
-        {/* </Router> */}
-      </BrowserRouter>
-    </ApolloProvider>
-  </HelmetProvider>
+  <ApolloProvider client={client}>
+    <BrowserRouter>
+      {/* <Router> */}
+      <App />
+      {/* </Router> */}
+    </BrowserRouter>
+  </ApolloProvider>
 );

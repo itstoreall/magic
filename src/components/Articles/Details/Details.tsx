@@ -1,8 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import OG from '../../helpers/OG';
 import { useGlobalContext } from '../../../context/GlobalContext';
-import Image from './Image';
 import { Thumb } from './Details.styles';
 
 const Details = () => {
@@ -13,23 +11,23 @@ const Details = () => {
   const { pathname } = location;
   const { articles } = useGlobalContext();
 
-  useEffect(() => {
-    document.title = 'Fanya!!!!'; // Update the title manually
+  // useEffect(() => {
+  //   document.title = 'Fanya!!!!'; // Update the title manually
 
-    console.log('document.title', document.title);
+  //   console.log('document.title', document.title);
 
-    const metaDescription = document.querySelector('meta[name="description"]');
-    if (metaDescription) {
-      metaDescription.setAttribute('content', 'New description 111');
-    }
-    console.log('metaDescription', metaDescription);
+  //   const metaDescription = document.querySelector('meta[name="description"]');
+  //   if (metaDescription) {
+  //     metaDescription.setAttribute('content', 'New description 111');
+  //   }
+  //   console.log('metaDescription', metaDescription);
 
-    const ogTitle = document.querySelector('meta[property="og:title"]');
-    if (ogTitle) {
-      ogTitle.setAttribute('content', 'New title 111');
-    }
-    console.log('ogTitle', ogTitle);
-  }, []);
+  //   const ogTitle = document.querySelector('meta[property="og:title"]');
+  //   if (ogTitle) {
+  //     ogTitle.setAttribute('content', 'New title 111');
+  //   }
+  //   console.log('ogTitle', ogTitle);
+  // }, []);
 
   useEffect(() => {
     const parsePathname = () => {
@@ -51,7 +49,6 @@ const Details = () => {
     <>
       {article ? (
         <>
-          {/* <OG article={article} /> */}
           <div>
             <Thumb>
               {/* <ImageCropper src={src} targetWidth={targetWidth} /> */}

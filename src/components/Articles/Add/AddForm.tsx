@@ -18,7 +18,7 @@ const AddForm = () => {
   const [description, setDescription] = useState<string>('');
   const [text, setText] = useState<string>('');
   const [author, setAuthor] = useState<string>('');
-  const [tags, setTags] = useState<string[]>(['magic']);
+  // const [tags, setTags] = useState<string[]>(['magic']);
   const [imageData, setImageData] = useState<string>('');
 
   const clearStates = () => {
