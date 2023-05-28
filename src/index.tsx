@@ -2,7 +2,6 @@ import ReactDOM from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom'; // BrowserRouter or HashRouter
 // import { Helmet, HelmetProvider } from 'react-helmet-async';
 import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
-import './index.css';
 import App from './App';
 
 // const currentUrl =
@@ -25,9 +24,9 @@ const root = ReactDOM.createRoot(
 root.render(
   <ApolloProvider client={client}>
     <BrowserRouter>
-      {/* <Router> */}
+      {/* <HashRouter> */}
       <App />
-      {/* </Router> */}
+      {/* </HashRouter> */}
     </BrowserRouter>
   </ApolloProvider>
 );

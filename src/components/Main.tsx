@@ -1,7 +1,8 @@
 import { ReactNode } from 'react';
+import { MainTag } from './Layout.styles';
 
 const Main = ({ children }: { children: ReactNode }) => {
-  return <main>{children}</main>;
+  return <MainTag>{children}</MainTag>;
 };
 
 export default Main;

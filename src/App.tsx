@@ -17,6 +17,7 @@ import ArticleDetails from './components/Articles/Details';
 
 const App = () => {
   const [articles, setArticles] = useState<any[]>([]);
+  const [themeMode, setThemeMode] = useState<string>('light');
 
   const apolloClient = useApolloClient();
 
@@ -29,7 +30,6 @@ const App = () => {
         console.error(e);
       }
     };
-
     fetchArticles();
   }, [apolloClient]);
 
@@ -38,7 +38,9 @@ const App = () => {
   const art = '/articles/:id';
 
   return (
-    <GlobalContext.Provider value={{ articles, setArticles }}>
+    <GlobalContext.Provider
+      value={{ articles, setArticles, themeMode, setThemeMode }}
+    >
       <Routes>
         <Route path='/' element={<Layout />}>
           <Route index element={<HomePage />} />
