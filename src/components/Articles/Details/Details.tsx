@@ -11,24 +11,6 @@ const Details = () => {
   const { pathname } = location;
   const { articles } = useGlobalContext();
 
-  // useEffect(() => {
-  //   document.title = 'Fanya!!!!'; // Update the title manually
-
-  //   console.log('document.title', document.title);
-
-  //   const metaDescription = document.querySelector('meta[name="description"]');
-  //   if (metaDescription) {
-  //     metaDescription.setAttribute('content', 'New description 111');
-  //   }
-  //   console.log('metaDescription', metaDescription);
-
-  //   const ogTitle = document.querySelector('meta[property="og:title"]');
-  //   if (ogTitle) {
-  //     ogTitle.setAttribute('content', 'New title 111');
-  //   }
-  //   console.log('ogTitle', ogTitle);
-  // }, []);
-
   useEffect(() => {
     const parsePathname = () => {
       const parsed = pathname.split('/');
@@ -50,16 +32,40 @@ const Details = () => {
       {article ? (
         <>
           <div>
+            <h1 style={{ fontSize: '40px', marginBottom: '20px' }}>
+              {article.title}
+            </h1>
+            <h2
+              style={{
+                marginBottom: '30px',
+                maxWidth: '700px',
+                fontSize: '20px',
+                fontWeight: 400,
+                lineHeight: 1.6,
+              }}
+            >
+              {article.description}
+            </h2>
+            <div
+              style={{
+                display: 'flex',
+                marginBottom: '30px',
+                color: '#988780',
+              }}
+            >
+              <p style={{ fontSize: '16px', marginRight: '40px' }}>
+                Автор: {article.author}
+              </p>
+              <p style={{ fontSize: '16px', marginRight: '40px' }}>
+                Май 28, 2023 12:01{' '}
+              </p>
+              <p>id: {article.id}</p>
+            </div>
+            {/* <p>id: {article.id}</p> */}
             <Thumb>
-              {/* <ImageCropper src={src} targetWidth={targetWidth} /> */}
               <img src={article.image} alt={article.title} />
             </Thumb>
-            {/* <Image src={article.image} targetWidth={900} /> */}
-            <h1>{article.title}</h1>
-            <p>id: {article.id}</p>
-            <p>description: {article.description}</p>
-            <p>Article: {article.article}</p>
-            <p>Author: {article.author}</p>
+            <p style={{ fontSize: '17px', lineHeight: 2 }}>{article.text}</p>
 
             {pathname.includes(`/admin/dashboard/article`) && (
               <>

@@ -1,12 +1,13 @@
-import { Link, useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import ImageCropper from '../helpers/ImageCropper';
+import { List, NavLinkTag } from './Articles.styles';
 
 const ArticleList = ({ articles }: any) => {
   const { pathname } = useLocation();
 
   const setFields = (el: any) => {
     return (
-      <div style={{ backgroundColor: '#85909c' }}>
+      <div>
         <div
           style={{
             height: '250px',
@@ -30,44 +31,37 @@ const ArticleList = ({ articles }: any) => {
   };
 
   return (
-    <ul
-      style={{
-        listStyle: 'none',
-        margin: 0,
-        padding: 0,
-        display: 'grid',
-        gridTemplateColumns: '48% 48%',
-        gridGap: '40px 4%',
-      }}
-    >
+    <List>
       {articles?.map((el: any) => {
         return (
           <li key={el.id}>
             {pathname === '/admin/dashboard/articles' ? (
               <>
-                <Link
+                <NavLinkTag
                   style={{ textDecoration: 'none', color: 'inherit' }}
                   to={`/admin/dashboard/articles/${el.id}`}
                 >
                   {setFields(el)}
-                </Link>
-                <Link to={`/admin/dashboard/articles/${el.id}/edit`}>Edit</Link>
-                <Link to={`/admin/dashboard/articles/${el.id}/delete`}>
+                </NavLinkTag>
+                <NavLinkTag to={`/admin/dashboard/articles/${el.id}/edit`}>
+                  Edit
+                </NavLinkTag>
+                <NavLinkTag to={`/admin/dashboard/articles/${el.id}/delete`}>
                   Delete
-                </Link>
+                </NavLinkTag>
               </>
             ) : (
-              <Link
+              <NavLinkTag
                 style={{ textDecoration: 'none', color: 'inherit' }}
                 to={`/articles/${el.id}`}
               >
                 {setFields(el)}
-              </Link>
+              </NavLinkTag>
             )}
           </li>
         );
       })}
-    </ul>
+    </List>
   );
 };
 
