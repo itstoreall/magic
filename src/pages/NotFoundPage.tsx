@@ -1,15 +1,18 @@
 import { useLocation } from 'react-router-dom';
+import { Page, Title, ContentBlock } from './Page.styles';
 
 const NotFoundPage = () => {
   const { pathname } = useLocation();
 
   return (
-    <div>
-      <h2>404 - Page not found</h2>
-      <p>
-        The requested URL <code>{pathname}</code> was not found.
-      </p>
-    </div>
+    <Page>
+      <Title>404 - Page not found</Title>
+      <ContentBlock>
+        <p>
+          The requested URL <code>{pathname}</code> was not found.
+        </p>
+      </ContentBlock>
+    </Page>
   );
 };
 

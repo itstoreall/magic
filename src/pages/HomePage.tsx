@@ -1,8 +1,11 @@
+import { Page, Title, ContentBlock } from './Page.styles';
+
 const HomePage = () => {
   return (
-    <>
-      <h1>Home page</h1>
-    </>
+    <Page>
+      <Title>Главная</Title>
+      <ContentBlock>Нет информации</ContentBlock>
+    </Page>
   );
 };
 

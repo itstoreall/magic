@@ -1,5 +1,5 @@
 import ReactDOM from 'react-dom/client';
-import { BrowserRouter } from 'react-router-dom'; // BrowserRouter or HashRouter
+import { HashRouter } from 'react-router-dom'; // BrowserRouter or HashRouter
 // import { Helmet, HelmetProvider } from 'react-helmet-async';
 import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
 import App from './App';
@@ -23,10 +23,10 @@ const root = ReactDOM.createRoot(
 
 root.render(
   <ApolloProvider client={client}>
-    <BrowserRouter>
-      {/* <HashRouter> */}
+    {/* <BrowserRouter> */}
+    <HashRouter>
       <App />
-      {/* </HashRouter> */}
-    </BrowserRouter>
+    </HashRouter>
+    {/* </BrowserRouter> */}
   </ApolloProvider>
 );

@@ -4,8 +4,8 @@ const light = '#F6F0E7';
 const dark = '#1F232C';
 const lightBlur = '#f7f1e9cc';
 const darkBlur = '#1f232ccc';
-const lightHover = '#f1ebe2';
-const darkHover = '#1b1f25cc';
+const lightHover = '#e5dfd7';
+const darkHover = '#2f3441';
 const contrstLight = '#e36858';
 const contrstLightHover = '#de5252';
 const contrstDark = '#96ABAD';
@@ -22,6 +22,7 @@ export const theme: { [key: string]: Theme } = {
     text: dark,
     textInvert: light,
     button: contrstLight,
+    buttonHover: contrstLightHover,
   },
 
   dark: {
@@ -34,5 +35,6 @@ export const theme: { [key: string]: Theme } = {
     text: light,
     textInvert: dark,
     button: contrstDark,
+    buttonHover: contrstDarkHover,
   },
 };

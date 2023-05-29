@@ -9,7 +9,7 @@ export const MainTag = s.main`
   // background-color: ${props => props.theme.secondaryBackground};
 `;
 
-export const Cotent = s.section`
+export const Section = s.section`
   // border: 2px solid white;
   margin: 0 auto;
   max-width: 900px;

@@ -1,8 +1,8 @@
 import { ReactNode } from 'react';
-import { Cotent } from './Layout.styles';
+import { Section } from './Layout.styles';
 
 const Content = ({ children }: { children: ReactNode }) => {
-  return <Cotent>{children}</Cotent>;
+  return <Section>{children}</Section>;
 };
 
 export default Content;

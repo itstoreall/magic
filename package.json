@@ -12,6 +12,7 @@
     "@types/node": "^16.7.13",
     "@types/react": "^18.0.0",
     "@types/react-dom": "^18.0.0",
+    "clamp-js": "^0.7.0",
     "gh-pages": "^5.0.0",
     "graphql": "^16.6.0",
     "modern-normalize": "^2.0.0",
@@ -51,6 +52,7 @@
     ]
   },
   "devDependencies": {
+    "@types/clamp-js": "^0.7.3",
     "@types/styled-components": "^5.1.26"
   }
 }
