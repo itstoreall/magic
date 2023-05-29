@@ -15,7 +15,11 @@ const Navigation = ({ element }: { element: string }) => {
           <>
             {memoizedData?.isAdmin && (
               <NavItem element={element}>
-                <HeaderNav to='/admin' element={element} admin={true}>
+                <HeaderNav
+                  to='/admin/dashboard/articles'
+                  element={element}
+                  admin={'admin'}
+                >
                   Редактор
                 </HeaderNav>
               </NavItem>
@@ -28,30 +32,38 @@ const Navigation = ({ element }: { element: string }) => {
               Статьи
             </HeaderNav>
           ) : (
-            <FooterNav to='/articles'>Статьи</FooterNav>
+            <FooterNav to='/articles' element={element}>
+              Статьи
+            </FooterNav>
           )}
         </NavItem>
         <NavItem element={element}>
           {element === 'header' ? (
-            <HeaderNav to='/' element={element}>
+            <HeaderNav to='/about' element={element}>
               О нас
             </HeaderNav>
           ) : (
-            <FooterNav to='/'>О нас</FooterNav>
+            <FooterNav to='/about' element={element}>
+              О нас
+            </FooterNav>
           )}
         </NavItem>
         <NavItem element={element}>
           {element === 'header' ? (
-            <HeaderNav to='/' element={element}>
+            <HeaderNav to='/contacts' element={element}>
               Контакты
             </HeaderNav>
           ) : (
-            <FooterNav to='/'>Контакты</FooterNav>
+            <FooterNav to='/contacts' element={element}>
+              Контакты
+            </FooterNav>
           )}
         </NavItem>
         {element === 'footer' && (
           <NavItem element={element}>
-            <FooterNav to='/admin'>Админ</FooterNav>
+            <FooterNav to='/admin' element={element}>
+              Админ
+            </FooterNav>
           </NavItem>
         )}
       </NavList>

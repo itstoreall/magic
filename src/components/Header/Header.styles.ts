@@ -36,8 +36,11 @@ export const HeaderNav = s(NavLinkTag)<NavProps>`
   padding: ${({ element }) => (element === 'header' ? '20px 25px' : '0')};
   margin-right: 3px;
   font-weight: 500;
-  color: ${({ admin, theme }) => (admin ? theme.textInvert : theme.text)};
+  color: ${({ admin, theme }) =>
+    admin === 'admin' ? theme.textInvert : theme.text};
   background-color: ${({ admin, theme }) => admin && theme.contrastBackground};
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
 
   &:hover {
     background-color: ${({ element, admin, theme }) =>
@@ -45,7 +48,4 @@ export const HeaderNav = s(NavLinkTag)<NavProps>`
         ? theme.backgroundHover
         : admin && theme.contrastBackgroundHover}; 
   }
-
-  -webkit-transition: 0.4s;
-  transition: 0.4s;
 `;

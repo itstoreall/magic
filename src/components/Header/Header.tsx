@@ -1,6 +1,6 @@
 import { HeaderTag, Content, Menu } from './Header.styles';
 import HeaderLogo from './HeaderLogo';
-import Navigation from '../Navigation/Navigation';
+import Navigation from '../Navigation';
 import ThemeToggle from '../ThemeToggle';
 
 const Header = () => {
@@ -8,6 +8,7 @@ const Header = () => {
     <HeaderTag>
       <Content>
         <HeaderLogo />
+
         <Menu>
           <Navigation element={'header'} />
           <ThemeToggle />

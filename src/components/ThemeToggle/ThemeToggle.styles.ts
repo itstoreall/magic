@@ -23,6 +23,10 @@ export const SwitchButton = s.label`
     -webkit-transition: 0.4s;
     transition: 0.4s;
     border-radius: 34px;
+
+    &:hover {
+      background-color: ${props => props.theme.buttonHover};
+    }
   }
 
   span:before {
@@ -39,7 +43,7 @@ export const SwitchButton = s.label`
   }
 
   input:checked + span {
-    background-color: ${props => props.theme.button};
+    // background-color: ${props => props.theme.button};
   }
 
   input:focus + span {
@@ -51,4 +55,6 @@ export const SwitchButton = s.label`
     -ms-transform: translateX(26px);
     transform: translateX(26px);
   }
+
+
 `;

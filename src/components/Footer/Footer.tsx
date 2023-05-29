@@ -1,12 +1,33 @@
-import { FooterTag } from './Footer.styles';
-import FooterCotyright from './FooterCotyright';
-import FooterContent from './FooterContent';
+import {
+  FooterTag,
+  Content,
+  MainBlock,
+  CopyrightBlock,
+  Copyright,
+  CopyrightNav,
+  CopyrighIcon,
+  CopyrighDate,
+} from './Footer.styles';
+import Navigation from '../Navigation';
 
 const Footer = () => {
   return (
     <FooterTag>
-      <FooterContent />
-      <FooterCotyright />
+      <Content>
+        <MainBlock>
+          <Navigation element={'footer'} />
+        </MainBlock>
+
+        <CopyrightBlock>
+          <Copyright>
+            <CopyrightNav to='/' element={'footer'}>
+              Astraia
+            </CopyrightNav>
+            <CopyrighIcon>&copy;</CopyrighIcon>
+            <CopyrighDate>{new Date().getFullYear()}</CopyrighDate>
+          </Copyright>
+        </CopyrightBlock>
+      </Content>
     </FooterTag>
   );
 };

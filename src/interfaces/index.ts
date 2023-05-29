@@ -13,13 +13,14 @@ export interface Theme {
   text: string;
   textInvert: string;
   button: string;
+  buttonHover: string;
 }
 
 // ----------------- NavLinkProps
 
 export interface GlobalStateProps {
   element: string;
-  admin?: boolean;
+  admin?: string;
 }
 
 // ----------------- NavLinkProps
