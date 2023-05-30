@@ -1,8 +1,10 @@
-/*
-object-assign
-(c) Sindre Sorhus
-@license MIT
-*/
+/*!
+ * Clamp.js 0.7.0
+ *
+ * Copyright 2011-2013, Joseph Schmitt http://joe.sh
+ * Released under the WTFPL license
+ * http://sam.zoy.org/wtfpl/
+ */
 
 /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/facebook/regenerator/blob/main/LICENSE */
 
